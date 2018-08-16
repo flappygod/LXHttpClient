@@ -71,13 +71,13 @@ public class LXAsyncTaskThread extends Thread {
 		try {
 			Object object = task.run(inObject,tag);
 			// 发送执行成功的消息
-			Message msg = handler.obtainMessage(LXAsyncTaskHandler.SUCCESS_MSG,
-					object);
+			Message msg = handler.obtainMessage(LXAsyncTaskHandler.SUCCESS_MSG,object);
+			//发送消息
 			handler.sendMessage(msg);
 		} catch (Exception e) {
 			// 发送执行错误的消息
-			Message msg = handler.obtainMessage(LXAsyncTaskHandler.FAILURE_MSG,
-					e);
+			Message msg = handler.obtainMessage(LXAsyncTaskHandler.FAILURE_MSG,e);
+			//错误
 			handler.sendMessage(msg);
 		}
 	}

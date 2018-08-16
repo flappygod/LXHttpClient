@@ -113,7 +113,7 @@ public class LXHttpTaskBase {
      * @return 转换后的字符串
      * @throws IOException 异常
      */
-    public static Object convertStreamToRetObject(InputStream is, String charset) throws Exception {
+    public static String convertStreamToStr(InputStream is, String charset) throws Exception {
         BufferedReader reader = new BufferedReader(new InputStreamReader(is,
                 charset));
         StringBuilder sb = new StringBuilder();

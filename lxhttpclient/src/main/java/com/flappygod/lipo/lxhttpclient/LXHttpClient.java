@@ -7,6 +7,7 @@ import com.flappygod.lipo.lxhttpclient.Asynctask.LXAsyncCallback;
 import com.flappygod.lipo.lxhttpclient.Asynctask.LXAsyncTask;
 import com.flappygod.lipo.lxhttpclient.Asynctask.LXAsyncTaskClient;
 import com.flappygod.lipo.lxhttpclient.Holder.LXHttpHeaderHolder;
+import com.flappygod.lipo.lxhttpclient.HttpTask.Base.LXHttpBaseTask;
 import com.flappygod.lipo.lxhttpclient.HttpTask.LXHttpTask;
 
 public class LXHttpClient {
@@ -194,7 +195,7 @@ public class LXHttpClient {
     }
 
 
-    public void postParam(LXHttpTask task,
+    public <T> void postParam(LXHttpBaseTask<T> task,
                           final LXAsyncCallback callback) {
         //线程池执行
         postParam(task, callback, null);
@@ -208,17 +209,17 @@ public class LXHttpClient {
      * @param callback 回调
      * @param tag      线程tag
      */
-    public void get(LXHttpTask intask,
-                    LXAsyncCallback callback,
-                    String tag) {
+    public <T> void get(LXHttpBaseTask<T> intask,
+                      LXAsyncCallback callback,
+                      String tag) {
         taskClient.excute(new LXHttpAsyncTask(callback) {
             @Override
             public Object run(Object data, String tag) throws Exception {
-                LXHttpTask task = (LXHttpTask) data;
+                LXHttpBaseTask<T> task = (LXHttpBaseTask<T>) data;
                 if (enableCookie && cookieHolder != null) {
                     task.setHeaderHolder(cookieHolder);
                 }
-                Object ret = task.get();
+                T ret = task.get();
                 if (enableCookie) {
                     cookieHolder = task.getHeaderHolder();
                 }
@@ -234,13 +235,13 @@ public class LXHttpClient {
      * @param callback 回调
      * @param tag      线程tag
      */
-    public void post(LXHttpTask task,
+    public <T> void post(LXHttpBaseTask<T> task,
                      LXAsyncCallback callback,
                      String tag) {
         taskClient.excute(new LXHttpAsyncTask(callback) {
             @Override
             public Object run(Object data, String tag) throws Exception {
-                LXHttpTask task = (LXHttpTask) data;
+                LXHttpBaseTask<T> task = (LXHttpBaseTask<T>) data;
                 if (enableCookie && cookieHolder != null) {
                     task.setHeaderHolder(cookieHolder);
                 }
@@ -260,14 +261,14 @@ public class LXHttpClient {
      * @param callback 回调
      * @param tag      线程tag
      */
-    public void postParam(LXHttpTask task,
+    public <T> void postParam(LXHttpBaseTask<T> task,
                           final LXAsyncCallback callback,
                           String tag) {
         //线程池执行
         taskClient.excute(new LXHttpAsyncTask(callback) {
             @Override
             public Object run(Object data, String tag) throws Exception {
-                LXHttpTask task = (LXHttpTask) data;
+                LXHttpBaseTask<T> task = (LXHttpBaseTask<T>) data;
                 if (enableCookie && cookieHolder != null) {
                     task.setHeaderHolder(cookieHolder);
                 }
