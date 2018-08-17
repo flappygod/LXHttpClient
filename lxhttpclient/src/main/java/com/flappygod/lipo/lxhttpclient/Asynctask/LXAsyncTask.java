@@ -1,11 +1,13 @@
 package com.flappygod.lipo.lxhttpclient.Asynctask;
 
 /**************
- * 异步回调
- * 
- * @author lijunlin
+ * 异步回调执行接口
+ * @param <M>  输入
+ * @param <T>  输出
  */
-public interface LXAsyncTask extends LXAsyncCallback {
+public interface  LXAsyncTask<M,T> extends LXAsyncCallback<T> {
+
+
 
 	/******************
 	 * 线程执行
@@ -14,7 +16,7 @@ public interface LXAsyncTask extends LXAsyncCallback {
 	 * @return
 	 * @throws Exception  错误
      */
-	Object run(Object data,String tag) throws Exception;
+	 T run(M data,String tag) throws Exception;
 
 
 }

@@ -30,7 +30,7 @@ import javax.net.ssl.X509TrustManager;
  * 抽象类，实现基础的获取数据功能，留出数据处理接口
  * @param <T>
  */
-public abstract class LXHttpsBaseTask<T> extends LXHttpTaskBase implements LXHttpTaskPreParseInterface<T>{
+public abstract class LXHttpsBaseTask<T> extends LXHttpTaskBase implements LXHttpTaskPreParseInterface<T> {
     // 请求的地址
     private String url;
     // 请求的Param参数
@@ -181,7 +181,7 @@ public abstract class LXHttpsBaseTask<T> extends LXHttpTaskBase implements LXHtt
         //初始化
         trustStoreFactory.init(trustStore);
         //初始化
-        keyManagerFactory.init(keyStore,clientPassword.toCharArray());
+        keyManagerFactory.init(keyStore, clientPassword.toCharArray());
         //获取true
         TrustManager[] trustM = trustStoreFactory.getTrustManagers();
         //获取sslcontext
@@ -246,7 +246,7 @@ public abstract class LXHttpsBaseTask<T> extends LXHttpTaskBase implements LXHtt
      * @throws Exception 异常
      */
     public T postAsParam() throws Exception {
-        return postParam(getPostParamStr(hashMap,charset));
+        return postParam(getPostParamStr(hashMap, charset));
     }
 
     /*************
@@ -256,7 +256,7 @@ public abstract class LXHttpsBaseTask<T> extends LXHttpTaskBase implements LXHtt
      * @throws Exception 异常
      */
     public T postParam(HashMap<String, Object> param) throws Exception {
-        return postParam(getPostParamStr(param,charset));
+        return postParam(getPostParamStr(param, charset));
     }
 
     /********************
@@ -278,9 +278,8 @@ public abstract class LXHttpsBaseTask<T> extends LXHttpTaskBase implements LXHtt
         // 时间
         conn.setConnectTimeout(connectTimeOut * 1000);
         // 设置通用属性
-        conn.setRequestProperty("Content-Type", "application/json;charset="
-                + charset);
-
+        conn.setRequestProperty("Content-Type", "application/json;charset=" + charset);
+        // 设置charset
         conn.setRequestProperty("Accept-Charset", charset);
         // 设置通用属性
         conn.setRequestProperty("accept", "*/*");
@@ -294,16 +293,23 @@ public abstract class LXHttpsBaseTask<T> extends LXHttpTaskBase implements LXHtt
         conn.setDoInput(true);
         // 获取URLConnection对象对应的输出流
         conn.getOutputStream().write(jsonData.getBytes(charset));
+        // flush
         conn.getOutputStream().flush();
+        // 关闭流数据
         conn.getOutputStream().close();
+        //获取返回数据
         int responseCode = conn.getResponseCode();
-        if (responseCode != HttpsURLConnection.HTTP_OK) {
+        //成功
+        if (responseCode == HttpsURLConnection.HTTP_OK) {
+            //保存session
             generateSession(conn);
-            throw new LXHttpException(responseCode, url,
-                    conn.getResponseMessage());
-        } else {
+            //获得流数据
             InputStream inputStream = conn.getInputStream();
-            return preParseData(convertStreamToStr(inputStream,charset));
+            //流数据进行转换
+            return preParseData(convertStreamToStr(inputStream, charset));
+        } else {
+            //抛出异常
+            throw new LXHttpException(responseCode, url, conn.getResponseMessage());
         }
     }
 
@@ -334,24 +340,30 @@ public abstract class LXHttpsBaseTask<T> extends LXHttpTaskBase implements LXHtt
         conn.setRequestProperty("accept", "*/*");
         // 在连接期间可以处理多个请求/响应
         conn.setRequestProperty("connection", "close");
-
+        // 用户自定义Property
         supplementaryConnection(conn);
-
         // 发送POST请求必须设置如下两行
         conn.setDoOutput(true);
         conn.setDoInput(true);
         // 获取URLConnection对象对应的输出流
         conn.getOutputStream().write(paramData.getBytes(charset));
+        //flush
         conn.getOutputStream().flush();
+        //关闭
         conn.getOutputStream().close();
+        //返回状态
         int responseCode = conn.getResponseCode();
-        if (responseCode != HttpsURLConnection.HTTP_OK) {
+        //如果成功
+        if (responseCode == HttpsURLConnection.HTTP_OK) {
+            //保存session
             generateSession(conn);
-            throw new LXHttpException(responseCode, url,
-                    conn.getResponseMessage());
-        } else {
+            //输入流
             InputStream inputStream = conn.getInputStream();
-            return preParseData(convertStreamToStr(inputStream,charset));
+            //流数据转换为字符串
+            return preParseData(convertStreamToStr(inputStream, charset));
+        } else {
+            //抛出异常
+            throw new LXHttpException(responseCode, url, conn.getResponseMessage());
         }
     }
 
@@ -366,7 +378,7 @@ public abstract class LXHttpsBaseTask<T> extends LXHttpTaskBase implements LXHtt
         String urlstr = url + getParamStr(hashMap, charset);
         URL surl = new URL(urlstr);
         HttpsURLConnection conn = (HttpsURLConnection) surl.openConnection();
-        //重定向
+        // 重定向
         conn.setInstanceFollowRedirects(instanceFollowRedirects);
         // get方式
         conn.setRequestMethod("GET");
@@ -375,25 +387,27 @@ public abstract class LXHttpsBaseTask<T> extends LXHttpTaskBase implements LXHtt
         // 时间
         conn.setConnectTimeout(connectTimeOut * 1000);
         // 请求类型
-        conn.setRequestProperty("Content-Type",
-                "application/x-www-form-urlencoded;charset=" + charset);
-
-        //设置编码
+        conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=" + charset);
+        // 设置编码
         conn.setRequestProperty("Accept-Charset", charset);
         // 设置通用属性
         conn.setRequestProperty("accept", "*/*");
         // 在连接期间可以处理多个请求/响应
         conn.setRequestProperty("connection", "close");
-        //进行初始化
+        // 进行初始化
         supplementaryConnection(conn);
-
+        // 获取返回值
         int responseCode = conn.getResponseCode();
+        //成功
         if (responseCode == HttpsURLConnection.HTTP_OK) {
+            //保存session
             generateSession(conn);
+            //获取
             InputStream inputStream = conn.getInputStream();
-            return preParseData(convertStreamToStr(inputStream,charset));
+            //转换为字符串
+            return preParseData(convertStreamToStr(inputStream, charset));
         } else {
-            throw new LXHttpException(responseCode, urlstr,conn.getResponseMessage());
+            throw new LXHttpException(responseCode, urlstr, conn.getResponseMessage());
         }
     }
 
@@ -416,8 +430,7 @@ public abstract class LXHttpsBaseTask<T> extends LXHttpTaskBase implements LXHtt
             Iterator<Map.Entry<String, String>> iter = mRequestProperty.entrySet()
                     .iterator();
             while (iter.hasNext()) {
-                Map.Entry<String, String> entry = (Map.Entry<String, String>) iter
-                        .next();
+                Map.Entry<String, String> entry = (Map.Entry<String, String>) iter.next();
                 conn.setRequestProperty(entry.getKey(), entry.getValue());
             }
         }

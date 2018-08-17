@@ -1,6 +1,11 @@
 package com.flappygod.lipo.lxhttpclient.Asynctask;
 
-public interface LXAsyncCallback {
+
+/*************
+ * 异步回调接口
+ * @param <T>  输出
+ */
+public interface LXAsyncCallback<T> {
 
 	/*************
 	 * 执行异常
@@ -20,6 +25,6 @@ public interface LXAsyncCallback {
 	 * @param data
 	 *            线程需要传递的数据
 	 */
-	void success(Object data, String tag);
+	void success(T data, String tag);
 
 }

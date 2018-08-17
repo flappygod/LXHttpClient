@@ -1,6 +1,7 @@
 package com.flappygod.lipo.lxhttpclient.Asynctask;
 
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 
 public class LXAsyncTaskHandler extends Handler {
@@ -43,7 +44,7 @@ public class LXAsyncTaskHandler extends Handler {
 	 *            任务
 	 */
 	public LXAsyncTaskHandler(String tag, LXAsyncTask task) {
-		super();
+		super(Looper.getMainLooper());
 		this.task = task;
 		this.tag = tag;
 	}

@@ -409,11 +409,12 @@ public class LXHttpsClient {
      * @param tag      线程tag
      */
     public <T> void postParam(LXHttpsBaseTask<T> task,
-                              LXAsyncCallback callback,
-                              String tag) {
+                               LXAsyncCallback<T> callback,
+                               String tag) {
         taskClient.excute(new LXHttpAsyncTask(callback) {
             @Override
             public Object run(Object data, String tag) throws Exception {
+                //传入task
                 LXHttpsBaseTask<T> task = (LXHttpsBaseTask<T>) data;
                 if (enableCookie && cookieHolder != null) {
                     task.setHeaderHolder(cookieHolder);

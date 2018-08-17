@@ -139,8 +139,7 @@ public class ExcutePoolExecutor extends ScheduledThreadPoolExecutor {
 			Iterator<Entry<String, Thread>> iter = Lthreads.entrySet()
 					.iterator();
 			while (iter.hasNext()) {
-				Entry<String, Thread> entry = (Entry<String, Thread>) iter
-						.next();
+				Entry<String, Thread> entry = (Entry<String, Thread>) iter.next();
 				Thread thread = entry.getValue();
 				ret.add(thread);
 			}

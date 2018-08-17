@@ -210,7 +210,7 @@ public class LXHttpClient {
      * @param tag      线程tag
      */
     public <T> void get(LXHttpBaseTask<T> intask,
-                      LXAsyncCallback callback,
+                          LXAsyncCallback<T> callback,
                       String tag) {
         taskClient.excute(new LXHttpAsyncTask(callback) {
             @Override

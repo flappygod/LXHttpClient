@@ -3,9 +3,15 @@ package com.flappygod.lipo.lxhttpclient;
 import com.flappygod.lipo.lxhttpclient.Asynctask.LXAsyncCallback;
 import com.flappygod.lipo.lxhttpclient.Asynctask.LXAsyncTask;
 
-public abstract class LXHttpAsyncTask implements LXAsyncTask {
+
+/****************
+ * 异步任务实现
+ * @param <T>  输入
+ * @param <M>  输出
+ */
+public abstract class LXHttpAsyncTask<T,M> implements LXAsyncTask<T,M> {
 	// 回调
-	private LXAsyncCallback callback;
+	private LXAsyncCallback<M> callback;
 
 	// 构造器
 	public LXHttpAsyncTask(LXAsyncCallback callback) {
@@ -14,7 +20,7 @@ public abstract class LXHttpAsyncTask implements LXAsyncTask {
 
 	/*********
 	 * 获取当前任务的回调
-	 * 
+	 *
 	 * @return
 	 */
 	public LXAsyncCallback getCallback() {
@@ -23,7 +29,7 @@ public abstract class LXHttpAsyncTask implements LXAsyncTask {
 
 	/*************
 	 * 设置当前任务的回调
-	 * 
+	 *
 	 * @param callback
 	 *            回调
 	 */
@@ -39,7 +45,7 @@ public abstract class LXHttpAsyncTask implements LXAsyncTask {
 	}
 
 	@Override
-	public void success(Object data, String tag) {
+	public void success(M data, String tag) {
 		if (callback != null) {
 			callback.success(data, tag);
 		}
