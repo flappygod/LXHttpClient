@@ -10,6 +10,9 @@ import java.lang.reflect.Type;
 import java.util.HashMap;
 
 public abstract class LXHttpModelTask<T> extends LXHttpBaseTask<T> {
+
+    private Exception exception;
+
     private Gson gson = new Gson();
 
     private Class<T> tClass;
@@ -22,7 +25,9 @@ public abstract class LXHttpModelTask<T> extends LXHttpBaseTask<T> {
      */
     public LXHttpModelTask(String url, HashMap<String, Object> hashMap) {
         super(url, hashMap);
+        //获取class
         Class<T> tClass = getTClass();
+        //保存class
         this.tClass = tClass;
     }
 
@@ -31,7 +36,7 @@ public abstract class LXHttpModelTask<T> extends LXHttpBaseTask<T> {
             Class<T> tClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
             return tClass;
         } catch (Exception exception) {
-            parseFailed(exception);
+            this.exception=exception;
             return null;
         }
     }
@@ -46,7 +51,22 @@ public abstract class LXHttpModelTask<T> extends LXHttpBaseTask<T> {
 
     @Override
     public T preParseData(String data) throws Exception {
-        return gson.fromJson(data, tClass);
+        try {
+            //如果存在
+            if(tClass!=null){
+                //使用gson解析
+                T t= gson.fromJson(data, tClass);
+                //返回
+                return t;
+            }else{
+                //解析失败
+                parseFailed(exception);
+            }
+        }catch (Exception ex){
+            //失败
+            parseFailed(ex);
+        }
+        return null;
     }
 
     //解析失败
