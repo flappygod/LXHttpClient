@@ -68,5 +68,5 @@ public abstract class LXHttpsModelTask<T> extends LXHttpsBaseTask<T> {
     }
 
     //解析失败
-    abstract void parseFailed(Exception excepiton);
+    public abstract void parseFailed(Exception excepiton);
 }
