@@ -176,7 +176,7 @@ public class LXHttpsClient {
      */
     public void get(String url,
                     HashMap<String, Object> param,
-                    LXAsyncCallback callback) {
+                    LXAsyncCallback<String> callback) {
         get(url, param, callback, null);
     }
 
@@ -190,7 +190,7 @@ public class LXHttpsClient {
      */
     public void get(String url,
                     HashMap<String, Object> param,
-                    LXAsyncCallback callback,
+                    LXAsyncCallback<String> callback,
                     String tag) {
         LXHttpsTask task = new LXHttpsTask(url, param);
         get(task, callback, tag);
@@ -203,7 +203,7 @@ public class LXHttpsClient {
      * @param callback 回调
      */
     public void get(LXHttpsTask task,
-                    LXAsyncCallback callback) {
+                    LXAsyncCallback<String> callback) {
         get(task, callback, null);
     }
 
@@ -217,7 +217,7 @@ public class LXHttpsClient {
      */
     public void post(String url,
                      HashMap<String, Object> param,
-                     LXAsyncCallback callback) {
+                     LXAsyncCallback<String> callback) {
         post(url, param, callback, null);
     }
 
@@ -231,7 +231,7 @@ public class LXHttpsClient {
      */
     public void post(String url,
                      HashMap<String, Object> param,
-                     LXAsyncCallback callback,
+                     LXAsyncCallback<String> callback,
                      String tag) {
         LXHttpsTask task = new LXHttpsTask(url, param);
         post(task, callback, tag);
@@ -244,7 +244,7 @@ public class LXHttpsClient {
      * @param callback 回调
      */
     public void post(LXHttpsTask task,
-                     LXAsyncCallback callback) {
+                     LXAsyncCallback<String> callback) {
         post(task, callback, null);
     }
 
@@ -258,7 +258,7 @@ public class LXHttpsClient {
      */
     public void postParam(String url,
                           HashMap<String, Object> param,
-                          LXAsyncCallback callback) {
+                          LXAsyncCallback<String> callback) {
         postParam(url, param, callback, null);
     }
 
@@ -272,7 +272,7 @@ public class LXHttpsClient {
      */
     public void postParam(String url,
                           HashMap<String, Object> param,
-                          LXAsyncCallback callback,
+                          LXAsyncCallback<String> callback,
                           String tag) {
         LXHttpsTask task = new LXHttpsTask(url, param);
         postParam(task, callback, tag);
@@ -280,7 +280,7 @@ public class LXHttpsClient {
 
 
     public <T> void postParam(LXHttpsBaseTask<T> task,
-                              LXAsyncCallback callback) {
+                              LXAsyncCallback<T> callback) {
         postParam(task, callback, null);
     }
 
@@ -292,11 +292,11 @@ public class LXHttpsClient {
      * @param tag      线程tag
      */
     public <T> void get(LXHttpsBaseTask<T> task,
-                        LXAsyncCallback callback,
+                        LXAsyncCallback<T> callback,
                         String tag) {
-        taskClient.excute(new LXHttpAsyncTask(callback) {
+        taskClient.excute(new LXHttpAsyncTask<LXHttpsBaseTask<T>,T>(callback) {
             @Override
-            public Object run(Object data, String tag) throws Exception {
+            public T run(LXHttpsBaseTask<T> data, String tag) throws Exception {
                 LXHttpsBaseTask<T> task = (LXHttpsBaseTask<T>) data;
                 if (enableCookie && cookieHolder != null) {
                     task.setHeaderHolder(cookieHolder);
@@ -334,7 +334,7 @@ public class LXHttpsClient {
                     task.setmHostnameVerifier(mHostnameVerifier);
                 }
 
-                Object ret = task.get();
+                T ret = task.get();
                 if (enableCookie) {
                     cookieHolder = task.getHeaderHolder();
                 }
@@ -352,11 +352,11 @@ public class LXHttpsClient {
      * @param tag      线程tag
      */
     public <T> void post(LXHttpsBaseTask<T> task,
-                         LXAsyncCallback callback,
+                         LXAsyncCallback<T> callback,
                          String tag) {
-        taskClient.excute(new LXHttpAsyncTask(callback) {
+        taskClient.excute(new LXHttpAsyncTask<LXHttpsBaseTask<T>,T>(callback) {
             @Override
-            public Object run(Object data, String tag) throws Exception {
+            public T run(LXHttpsBaseTask<T> data, String tag) throws Exception {
                 LXHttpsBaseTask<T> task = (LXHttpsBaseTask<T>) data;
                 if (enableCookie && cookieHolder != null) {
                     task.setHeaderHolder(cookieHolder);
@@ -391,7 +391,7 @@ public class LXHttpsClient {
                 if (mHostnameVerifier != null) {
                     task.setmHostnameVerifier(mHostnameVerifier);
                 }
-                Object ret = task.postAsJson();
+                T ret = task.postAsJson();
                 if (enableCookie) {
                     cookieHolder = task.getHeaderHolder();
                 }
@@ -411,9 +411,9 @@ public class LXHttpsClient {
     public <T> void postParam(LXHttpsBaseTask<T> task,
                                LXAsyncCallback<T> callback,
                                String tag) {
-        taskClient.excute(new LXHttpAsyncTask(callback) {
+        taskClient.excute(new LXHttpAsyncTask<LXHttpsBaseTask<T>,T>(callback) {
             @Override
-            public Object run(Object data, String tag) throws Exception {
+            public T run(LXHttpsBaseTask<T> data, String tag) throws Exception {
                 //传入task
                 LXHttpsBaseTask<T> task = (LXHttpsBaseTask<T>) data;
                 if (enableCookie && cookieHolder != null) {
@@ -449,7 +449,7 @@ public class LXHttpsClient {
                 if (mHostnameVerifier != null) {
                     task.setmHostnameVerifier(mHostnameVerifier);
                 }
-                Object ret = task.postAsParam();
+                T ret = task.postAsParam();
                 if (enableCookie) {
                     cookieHolder = task.getHeaderHolder();
                 }

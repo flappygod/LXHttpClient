@@ -9,8 +9,7 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 
-public  class LXHttpModelTask<T> extends LXHttpBaseTask<T> {
-
+public abstract class LXHttpModelTask<T> extends LXHttpBaseTask<T> {
     private Gson gson = new Gson();
 
     private Class<T> tClass;
@@ -32,7 +31,8 @@ public  class LXHttpModelTask<T> extends LXHttpBaseTask<T> {
             Class<T> tClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
             return tClass;
         } catch (Exception exception) {
-            throw new LXParseException("can't parse unknown type T");
+            parseFailed(exception);
+            return null;
         }
     }
 
@@ -48,4 +48,7 @@ public  class LXHttpModelTask<T> extends LXHttpBaseTask<T> {
     public T preParseData(String data) throws Exception {
         return gson.fromJson(data, tClass);
     }
+
+    //解析失败
+    abstract void parseFailed(Exception excepiton);
 }
