@@ -174,4 +174,21 @@ public class LXAsyncTaskClient {
     }
 
 
+    /*********************
+     * 获取当前正在进行的任务
+     *
+     * @return
+     */
+    public List<LXAsyncTask> getAllTask() {
+        List<LXAsyncTask> tasks = new ArrayList<LXAsyncTask>();
+        List<Thread> threads = threadpool.getAllThread();
+        for (int s = 0; s < threads.size(); s++) {
+            if (threads.get(s) instanceof LXAsyncTaskThread) {
+                LXAsyncTaskThread men = (LXAsyncTaskThread) threads.get(s);
+                tasks.add(men.getTask());
+            }
+        }
+        return tasks;
+    }
+
 }
