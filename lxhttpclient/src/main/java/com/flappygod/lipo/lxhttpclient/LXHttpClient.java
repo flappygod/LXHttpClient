@@ -9,6 +9,7 @@ import com.flappygod.lipo.lxhttpclient.Asynctask.LXAsyncTaskClient;
 import com.flappygod.lipo.lxhttpclient.Holder.LXHttpHeaderHolder;
 import com.flappygod.lipo.lxhttpclient.HttpTask.Base.LXHttpBaseTask;
 import com.flappygod.lipo.lxhttpclient.HttpTask.LXHttpTask;
+import com.flappygod.lipo.lxhttpclient.HttpTask.LXHttpsModelTask;
 
 public class LXHttpClient {
 
