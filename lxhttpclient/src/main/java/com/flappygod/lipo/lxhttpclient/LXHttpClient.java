@@ -18,10 +18,8 @@ public class LXHttpClient {
     private LXAsyncTaskClient taskClient;
     // 线程池的默认大小
     public final static int DEFAULT_POOL_SIZE = 3;
-
     // 是否开启cookie
     private boolean enableCookie = false;
-
     // cookie
     private LXHttpHeaderHolder cookieHolder;
 
