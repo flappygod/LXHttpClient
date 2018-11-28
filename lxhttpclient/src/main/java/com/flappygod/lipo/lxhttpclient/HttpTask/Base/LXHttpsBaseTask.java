@@ -4,7 +4,6 @@ import android.content.Context;
 
 import com.flappygod.lipo.lxhttpclient.Exception.LXHttpException;
 import com.flappygod.lipo.lxhttpclient.Holder.LXHttpHeaderHolder;
-import com.flappygod.lipo.lxhttpclient.HttpTask.LXHttpTaskBase;
 import com.flappygod.lipo.lxhttpclient.HttpTaskInterface.LXHttpTaskPreParseInterface;
 import com.flappygod.lipo.lxhttpclient.Verifier.DefaultTrustManager;
 

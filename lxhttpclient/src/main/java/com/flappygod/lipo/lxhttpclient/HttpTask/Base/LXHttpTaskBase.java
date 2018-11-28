@@ -1,4 +1,4 @@
-package com.flappygod.lipo.lxhttpclient.HttpTask;
+package com.flappygod.lipo.lxhttpclient.HttpTask.Base;
 
 import org.json.JSONException;
 import org.json.JSONObject;
