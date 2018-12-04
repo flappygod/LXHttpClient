@@ -1,5 +1,7 @@
 package com.flappygod.lipo.lxhttpclient.HttpTask.Base;
 
+import com.flappygod.lipo.lxhttpclient.Tools.JSONTool;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -88,22 +90,7 @@ public class LXHttpTaskBase {
      */
     public static String getPostJsonStr(HashMap<String, Object> requestParamsMap)
             throws JSONException, UnsupportedEncodingException {
-        if (requestParamsMap == null) {
-            return "";
-        }
-        JSONObject jb = new JSONObject();
-        Iterator<Map.Entry<String, Object>> it = requestParamsMap.entrySet()
-                .iterator();
-        while (it.hasNext()) {
-            Map.Entry<String, Object> element = (Map.Entry<String, Object>) it
-                    .next();
-            try {
-                jb.put((String) element.getKey(), element.getValue());
-            } catch (JSONException e) {
-                throw e;
-            }
-        }
-        return jb.toString().trim();
+        return JSONTool.HashMapToJson(requestParamsMap).toString();
     }
 
     /**********************
