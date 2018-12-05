@@ -85,7 +85,9 @@ public class JSONTool {
         List datalist = (ArrayList) list;
         JSONArray array = new JSONArray();
         for (int s = 0; s < datalist.size(); s++) {
-            if (datalist.get(s) instanceof LinkedTreeMap) {
+            if (datalist.get(s) instanceof HashMap) {
+                array.put( HashMapToJson((HashMap) datalist.get(s)));
+            }else  if (datalist.get(s) instanceof LinkedTreeMap) {
                 array.put(LinkedMapToJson((LinkedTreeMap) datalist.get(s)));
             } else if (datalist.get(s) instanceof ArrayList) {
                 array.put(ArrayListToJson((ArrayList) datalist.get(s)));
