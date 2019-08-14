@@ -1,6 +1,6 @@
-package com.flappygod.lipo.lxhttpclient.HttpTask.Base;
+package com.flappygo.lilin.lxhttpclient.HttpTask.Base;
 
-import com.flappygod.lipo.lxhttpclient.Tools.JSONTool;
+import com.flappygo.lilin.lxhttpclient.Tools.JSONTool;
 
 import org.json.JSONException;
 import org.json.JSONObject;

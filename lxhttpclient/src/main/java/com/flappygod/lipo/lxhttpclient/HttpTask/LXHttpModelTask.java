@@ -1,8 +1,8 @@
-package com.flappygod.lipo.lxhttpclient.HttpTask;
+package com.flappygo.lilin.lxhttpclient.HttpTask;
 
-import com.flappygod.lipo.lxhttpclient.Exception.LXHttpException;
-import com.flappygod.lipo.lxhttpclient.Exception.LXParseException;
-import com.flappygod.lipo.lxhttpclient.HttpTask.Base.LXHttpBaseTask;
+import com.flappygo.lilin.lxhttpclient.Exception.LXHttpException;
+import com.flappygo.lilin.lxhttpclient.Exception.LXParseException;
+import com.flappygo.lilin.lxhttpclient.HttpTask.Base.LXHttpBaseTask;
 import com.google.gson.Gson;
 
 import java.lang.reflect.ParameterizedType;

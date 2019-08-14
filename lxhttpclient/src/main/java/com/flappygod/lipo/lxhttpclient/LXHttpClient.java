@@ -1,15 +1,15 @@
-package com.flappygod.lipo.lxhttpclient;
+package com.flappygo.lilin.lxhttpclient;
 
 import java.util.HashMap;
 import java.util.List;
 
-import com.flappygod.lipo.lxhttpclient.Asynctask.LXAsyncCallback;
-import com.flappygod.lipo.lxhttpclient.Asynctask.LXAsyncTask;
-import com.flappygod.lipo.lxhttpclient.Asynctask.LXAsyncTaskClient;
-import com.flappygod.lipo.lxhttpclient.Holder.LXHttpHeaderHolder;
-import com.flappygod.lipo.lxhttpclient.HttpTask.Base.LXHttpBaseTask;
-import com.flappygod.lipo.lxhttpclient.HttpTask.LXHttpTask;
-import com.flappygod.lipo.lxhttpclient.HttpTask.LXHttpsModelTask;
+import com.flappygo.lilin.lxhttpclient.Asynctask.LXAsyncCallback;
+import com.flappygo.lilin.lxhttpclient.Asynctask.LXAsyncTask;
+import com.flappygo.lilin.lxhttpclient.Asynctask.LXAsyncTaskClient;
+import com.flappygo.lilin.lxhttpclient.Holder.LXHttpHeaderHolder;
+import com.flappygo.lilin.lxhttpclient.HttpTask.Base.LXHttpBaseTask;
+import com.flappygo.lilin.lxhttpclient.HttpTask.LXHttpTask;
+import com.flappygo.lilin.lxhttpclient.HttpTask.LXHttpsModelTask;
 
 public class LXHttpClient {
 

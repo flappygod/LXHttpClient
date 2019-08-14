@@ -1,4 +1,4 @@
-package com.flappygod.lipo.lxhttpclient.Holder;
+package com.flappygo.lilin.lxhttpclient.Holder;
 
 
 import java.util.List;

@@ -3,7 +3,7 @@
  * distributed with this file and available online at
  * http://www.etong.com/
  */
-package com.flappygod.lipo.lxhttpclient.Tools;
+package com.flappygo.lilin.lxhttpclient.Tools;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

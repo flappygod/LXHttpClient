@@ -1,4 +1,4 @@
-package com.flappygod.lipo.lxhttpclient.HttpTaskInterface;
+package com.flappygo.lilin.lxhttpclient.HttpTaskInterface;
 
 /**
  * Created by Administrator on 2017/12/17.

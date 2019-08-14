@@ -1,11 +1,11 @@
-package com.flappygod.lipo.lxhttpclient.Asynctask;
+package com.flappygo.lilin.lxhttpclient.Asynctask;
 
 import android.content.Context;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.flappygod.lipo.lxhttpclient.Threadpool.ExcutePoolExecutor;
+import com.flappygo.lilin.lxhttpclient.Threadpool.ExcutePoolExecutor;
 
 /***************
  * 异步线程执行

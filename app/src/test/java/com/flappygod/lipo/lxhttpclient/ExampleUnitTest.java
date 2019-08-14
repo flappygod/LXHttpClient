@@ -1,4 +1,4 @@
-package com.flappygod.lipo.lxhttpclient;
+package com.flappygo.lilin.lxhttpclient;
 
 import org.junit.Test;
 

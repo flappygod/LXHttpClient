@@ -1,8 +1,8 @@
-package com.flappygod.lipo.lxhttpclient.HttpTask.Base;
+package com.flappygo.lilin.lxhttpclient.HttpTask.Base;
 
-import com.flappygod.lipo.lxhttpclient.Exception.LXHttpException;
-import com.flappygod.lipo.lxhttpclient.Holder.LXHttpHeaderHolder;
-import com.flappygod.lipo.lxhttpclient.HttpTaskInterface.LXHttpTaskPreParseInterface;
+import com.flappygo.lilin.lxhttpclient.Exception.LXHttpException;
+import com.flappygo.lilin.lxhttpclient.Holder.LXHttpHeaderHolder;
+import com.flappygo.lilin.lxhttpclient.HttpTaskInterface.LXHttpTaskPreParseInterface;
 
 import org.json.JSONObject;
 

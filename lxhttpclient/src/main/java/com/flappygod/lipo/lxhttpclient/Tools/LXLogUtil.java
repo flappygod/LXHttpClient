@@ -1,4 +1,4 @@
-package com.flappygod.lipo.lxhttpclient.Tools;
+package com.flappygo.lilin.lxhttpclient.Tools;
 
 import android.util.Log;
 

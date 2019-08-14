@@ -1,6 +1,6 @@
-package com.flappygod.lipo.lxhttpclient.HttpTask;
+package com.flappygo.lilin.lxhttpclient.HttpTask;
 
-import com.flappygod.lipo.lxhttpclient.HttpTask.Base.LXHttpBaseTask;
+import com.flappygo.lilin.lxhttpclient.HttpTask.Base.LXHttpBaseTask;
 
 import java.util.HashMap;
 

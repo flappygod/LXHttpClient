@@ -1,4 +1,4 @@
-package com.flappygod.lipo.lxhttpclient.Threadpool;
+package com.flappygo.lilin.lxhttpclient.Threadpool;
 
 import java.lang.reflect.Proxy;
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ import java.util.concurrent.RejectedExecutionHandler;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.ThreadFactory;
 
-import com.flappygod.lipo.lxhttpclient.Tools.LXLogUtil;
+import com.flappygo.lilin.lxhttpclient.Tools.LXLogUtil;
 
 /*********************************
  * Created by lijunlin 自定义线程池

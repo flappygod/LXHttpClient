@@ -1,4 +1,4 @@
-package com.flappygod.lipo.lxhttpclient;
+package com.flappygo.lilin.lxhttpclient;
 
 import java.util.HashMap;
 import java.util.List;
@@ -9,12 +9,12 @@ import javax.net.ssl.TrustManager;
 
 import android.content.Context;
 
-import com.flappygod.lipo.lxhttpclient.Asynctask.LXAsyncCallback;
-import com.flappygod.lipo.lxhttpclient.Asynctask.LXAsyncTask;
-import com.flappygod.lipo.lxhttpclient.Asynctask.LXAsyncTaskClient;
-import com.flappygod.lipo.lxhttpclient.Holder.LXHttpHeaderHolder;
-import com.flappygod.lipo.lxhttpclient.HttpTask.Base.LXHttpsBaseTask;
-import com.flappygod.lipo.lxhttpclient.HttpTask.LXHttpsTask;
+import com.flappygo.lilin.lxhttpclient.Asynctask.LXAsyncCallback;
+import com.flappygo.lilin.lxhttpclient.Asynctask.LXAsyncTask;
+import com.flappygo.lilin.lxhttpclient.Asynctask.LXAsyncTaskClient;
+import com.flappygo.lilin.lxhttpclient.Holder.LXHttpHeaderHolder;
+import com.flappygo.lilin.lxhttpclient.HttpTask.Base.LXHttpsBaseTask;
+import com.flappygo.lilin.lxhttpclient.HttpTask.LXHttpsTask;
 
 public class LXHttpsClient {
     // 静态单例模式

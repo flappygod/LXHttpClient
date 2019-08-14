@@ -1,4 +1,4 @@
-package com.flappygod.lipo.lxhttpclient.Exception;
+package com.flappygo.lilin.lxhttpclient.Exception;
 
 public class LXHttpException extends Exception {
 

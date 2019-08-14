@@ -1,7 +1,7 @@
-package com.flappygod.lipo.lxhttpclient;
+package com.flappygo.lilin.lxhttpclient;
 
-import com.flappygod.lipo.lxhttpclient.Asynctask.LXAsyncCallback;
-import com.flappygod.lipo.lxhttpclient.Asynctask.LXAsyncTask;
+import com.flappygo.lilin.lxhttpclient.Asynctask.LXAsyncCallback;
+import com.flappygo.lilin.lxhttpclient.Asynctask.LXAsyncTask;
 
 
 /****************

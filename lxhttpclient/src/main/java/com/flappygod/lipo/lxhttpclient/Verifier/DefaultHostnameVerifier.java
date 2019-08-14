@@ -1,4 +1,4 @@
-package com.flappygod.lipo.lxhttpclient.Verifier;
+package com.flappygo.lilin.lxhttpclient.Verifier;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLSession;
