@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/LXHttpClient.iml" filepath="$PROJECT_DIR$/LXHttpClient.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/lxhttpclient/lxhttpclient.iml" filepath="$PROJECT_DIR$/lxhttpclient/lxhttpclient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LXHttpClient.iml" filepath="$PROJECT_DIR$/LXHttpClient.iml" group="LXHttpClient" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="LXHttpClient/app" />
+      <module fileurl="file://$PROJECT_DIR$/lxhttpclient/lxhttpclient.iml" filepath="$PROJECT_DIR$/lxhttpclient/lxhttpclient.iml" group="LXHttpClient/lxhttpclient" />
     </modules>
   </component>
 </project>
